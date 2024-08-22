@@ -13,7 +13,6 @@ class ArticleControllerSpec extends Specification implements ControllerUnitTest<
 
     void "Test index action returns nothing when no articles are present"() {
         given:
-        Article testArticle2 = new Article(title:"testArticle2")
         controller.articleService = Mock(ArticleService) {
             1 * list() >> []
         }
