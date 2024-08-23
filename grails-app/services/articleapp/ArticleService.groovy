@@ -8,4 +8,8 @@ class ArticleService {
     List<Article> list() {
         return Article.list()
     }
+
+    Article get(Long id) {
+        return Article.get(id)
+    }
 }

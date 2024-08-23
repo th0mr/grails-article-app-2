@@ -7,4 +7,8 @@ class ArticleController {
     def index() {
         respond articleService.list()
     }
+
+    def show(Long id) {
+        respond articleService.get(id)
+    }
 }
