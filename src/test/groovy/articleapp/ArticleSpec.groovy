@@ -5,7 +5,7 @@ import spock.lang.Specification
 
 class ArticleSpec extends Specification implements DomainUnitTest<Article> {
 
-    Article a = new Article(title:"testTitle")
+    Article a = new Article(title:"testTitle", body:"testBody")
 
     def setup() {
     }
@@ -17,6 +17,7 @@ class ArticleSpec extends Specification implements DomainUnitTest<Article> {
         expect:
         a.validate()
         a.title == "testTitle"
+        a.body == "testBody"
     }
 
 
@@ -27,5 +28,14 @@ class ArticleSpec extends Specification implements DomainUnitTest<Article> {
         then:
         !a.validate()
         a.errors.getFieldError('title').code == 'blank'
+    }
+
+    void "body must not be blank"() {
+        when:
+        a.body = ""
+
+        then:
+        !a.validate()
+        a.errors.getFieldError('body').code == 'blank'
     }
 }
